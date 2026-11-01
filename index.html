@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Daud &amp; Carissa · Wedding Invitation</title>
-<meta name="description" content="We joyfully invite you to celebrate the wedding of Daud &amp; Carissa on 06 December 2026.">
+<meta name="description" content="We joyfully invite you to celebrate the wedding of Daud &amp; Carissa on 6th December 2026.">
 <meta property="og:title" content="Daud & Carissa — Wedding Invitation">
 <meta property="og:image" content="images/cover.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -94,10 +94,16 @@ p{font-size:1rem}
 
 /* Gallery */
 #gallery{padding-left:12px;padding-right:12px}
-.grid{columns:2;column-gap:10px;max-width:900px;margin:0 auto}
-.grid img{width:100%;height:auto;break-inside:avoid;margin-bottom:10px;cursor:zoom-in;transition:opacity .3s}
-.grid img:hover{opacity:.88}
-@media(min-width:760px){.grid{columns:3}}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;max-width:900px;margin:0 auto}
+.grid img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;cursor:zoom-in;transition:filter .3s}
+.grid img:hover{filter:brightness(.92)}
+@media(min-width:760px){.grid{grid-template-columns:repeat(3,1fr);gap:10px}}
+.vid{position:relative;max-width:900px;margin:0 auto 8px;aspect-ratio:16/9;background:#000;cursor:pointer;overflow:hidden}
+.vid img,.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0;object-fit:cover}
+.play{position:absolute;left:50%;top:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;background:rgba(255,255,255,.92);transition:transform .3s}
+.play::after{content:"";position:absolute;left:27px;top:19px;border-left:20px solid #000;border-top:15px solid transparent;border-bottom:15px solid transparent}
+.vid:hover .play{transform:scale(1.08)}
+@media(min-width:760px){#gallery .vid{margin-bottom:10px}}
 #lb{position:fixed;inset:0;z-index:80;background:rgba(0,0,0,.94);display:none;align-items:center;justify-content:center;padding:20px;cursor:zoom-out}
 #lb.on{display:flex}
 #lb img{max-height:92vh;object-fit:contain}
@@ -139,6 +145,11 @@ footer{padding:80px 24px;background:var(--forest);color:var(--white);text-align:
 footer h2{color:var(--white);margin-bottom:10px}
 footer p{color:var(--pink)}
 
+/* Scroll animations */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .9s ease,transform .9s ease;transition-delay:var(--d,0s)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1!important;transform:none!important}}
+
 /* Music */
 #mbtn{position:fixed;right:16px;bottom:16px;z-index:60;width:46px;height:46px;border-radius:50%;border:1px solid var(--olive);background:rgba(255,255,255,.92);color:var(--olive);cursor:pointer;display:none;align-items:center;justify-content:center}
 #mbtn.on{display:flex}
@@ -171,7 +182,7 @@ body.opened #hero .wrap{opacity:1;transform:none}
   <div class="wrap">
     <p class="small">WE ARE GETTING MARRIED</p>
     <h1>Daud<span class="amp">and</span>Carissa</h1>
-    <p class="date">06 · 12 · 2026</p>
+    <p class="date">6th December 2026</p>
   </div>
 </section>
 
@@ -189,7 +200,7 @@ body.opened #hero .wrap{opacity:1;transform:none}
   <div class="wrap">
     <p class="lbl">The Groom</p>
     <h2>Daud Putra Chriswanto</h2>
-    <p class="par">Son of<br>Mr. Chriswanto Subagio &amp; Mrs. Rita Agustina W</p>
+    <p class="par">Son of<br>Mr. Adrian Chriswanto &amp; Mrs. Rita Agustina W</p>
   </div>
 </section>
 
@@ -206,7 +217,7 @@ body.opened #hero .wrap{opacity:1;transform:none}
 <section id="event">
   <div class="wrap card">
     <h2>Wedding Dinner</h2>
-    <p class="event-date">Sunday, 06 December 2026</p>
+    <p class="event-date">Sunday, 6th December 2026</p>
     <p class="time">18:30</p>
     <p class="venue">Chef’s Table</p>
     <p class="venue2">Somerset Sudirman Jakarta</p>
@@ -245,16 +256,17 @@ body.opened #hero .wrap{opacity:1;transform:none}
 <!-- GALLERY -->
 <section id="gallery">
   <h2>Our Moments</h2>
+  <div class="vid" id="vid" role="button" tabindex="0" aria-label="Play our pre-wedding video"><img src="https://i.ytimg.com/vi/EsgPNm1ESp0/hqdefault.jpg" alt="Our pre-wedding video" loading="lazy"><span class="play"></span></div>
   <div class="grid">
     <img src="images/g03.jpg" alt="Daud and Carissa sitting together" loading="lazy">
     <img src="images/g17.jpg" alt="Looking up at each other under the lamp" loading="lazy">
-    <img src="images/g12.jpg" alt="Walking through the garden" loading="lazy">
+    <img src="images/g12.jpg" style="object-position:55% 50%" alt="Walking through the garden" loading="lazy">
     <img src="images/g06.jpg" alt="Portrait of the couple" loading="lazy">
-    <img src="images/g13.jpg" alt="Forehead to forehead" loading="lazy">
+    <img src="images/g13.jpg" style="object-position:50% 50%" alt="Forehead to forehead" loading="lazy">
     <img src="images/g15.jpg" alt="Embracing on the sofa" loading="lazy">
     <img src="images/g02.jpg" alt="Holding hands, laughing" loading="lazy">
     <img src="images/g11.jpg" alt="Waving through the window" loading="lazy">
-    <img src="images/g18.jpg" alt="Under the paper lanterns" loading="lazy">
+    <img src="images/g18.jpg" style="object-position:50% 50%" alt="Under the paper lanterns" loading="lazy">
     <img src="images/g14.jpg" alt="A tender moment" loading="lazy">
     <img src="images/g16.jpg" alt="Dancing on the sofa" loading="lazy">
     <img src="images/g19.jpg" alt="Close portrait in black and white" loading="lazy">
@@ -314,7 +326,7 @@ body.opened #hero .wrap{opacity:1;transform:none}
 
 <script>
 /* ====== CONFIG ====== */
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwbgvnMmNipP60DzfxrLbYhnmKkOdlv9MzJHup0LjpASwt_y8A6ECwa0nIv-NzNWpaccQ/exec"; // lihat README
+const SCRIPT_URL = "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE"; // lihat README
 const READY = /^https:\/\/script\.google\.com\/macros\/s\/[^\s]+\/exec$/.test(SCRIPT_URL);
 const WEDDING = new Date("2026-12-06T18:30:00+07:00");
 /* ==================== */
@@ -397,6 +409,31 @@ $("rsvpForm").onsubmit = async e => {
   } catch { note.textContent = "Something went wrong. Please try again."; }
   btn.disabled = false; btn.textContent = "Send RSVP";
 };
+
+// Pre-wedding video (click to load YouTube, pauses background music)
+(function(){
+  const v = $("vid");
+  const play = () => {
+    setMusic(false);
+    v.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/EsgPNm1ESp0?autoplay=1&rel=0" title="Daud & Carissa pre-wedding video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
+    v.onclick = v.onkeydown = null; v.style.cursor = "default"; v.removeAttribute("role"); v.removeAttribute("tabindex");
+  };
+  v.onclick = play;
+  v.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); play(); } };
+})();
+
+// Gentle scroll animations
+(function(){
+  const sel = 'section:not(#hero) h2,section:not(#hero) .sub,#verse .line,#verse blockquote,#verse cite,.person .wrap>*,.card>*,#count .cd,.swatches .sw,.vid,.grid img,#rsvp .wrap>p,#rsvp form,.wishes,#gift .wrap>p,.acct,.reg a,footer>*';
+  const els = [...document.querySelectorAll(sel)];
+  els.forEach(el => el.classList.add("rv"));
+  document.querySelectorAll(".swatches .sw").forEach((el, i) => el.style.setProperty("--d", (i * .12) + "s"));
+  document.querySelectorAll(".grid img").forEach((el, i) => el.style.setProperty("--d", ((i % 3) * .1) + "s"));
+  document.querySelectorAll(".person .wrap>*,.card>*").forEach((el, i) => el.style.setProperty("--d", ((i % 5) * .1) + "s"));
+  if (!("IntersectionObserver" in window)) { els.forEach(el => el.classList.add("in")); return; }
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .12, rootMargin: "0px 0px -6% 0px" });
+  els.forEach(el => io.observe(el));
+})();
 </script>
 </body>
 </html>
